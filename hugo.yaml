@@ -1,0 +1,25 @@
+theme: hugo-bearcub
+baseURL: 'https://www.mnb.ltd'
+languageCode: en-gb
+copyright: "Mill & Byte Ltd"
+defaultContentLanguage: en
+enableRobotsTXT: true
+enableEmoji: true
+params:
+  author:
+    name: Ben A.
+  description: Machining. And Coding. And that's about it.
+  madeWith: 'Made with [Bear Cub](https://github.com/clente/hugo-bearcub). And a bunch of LLMs :sweat_smile: | [Say Hi :wave:](mailto:hi@mnb.ltd)'
+  custom_css:
+    - css/fade.css
+    - css/random-items.css
+  googlefonts: ["Rubik:wght@300", "Fira Mono"]
+  fontbody: 'Rubik'
+  fontcode: 'Fira Mono'
+
+generateSocialCard: true
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
