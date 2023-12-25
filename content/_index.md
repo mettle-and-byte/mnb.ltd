@@ -1,4 +1,4 @@
-# Mill & Byte Ltd
+# Mettle & Byte Ltd
 {{< random
 "\"Milling Ideas, Engineering Reality.\""
 "\"From Concept to CNC, Code to Creation.\""

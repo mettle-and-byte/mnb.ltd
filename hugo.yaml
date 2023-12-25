@@ -1,7 +1,7 @@
 theme: hugo-bearcub
 baseURL: 'https://www.mnb.ltd'
 languageCode: en-gb
-copyright: "Mill & Byte Ltd"
+copyright: "Mettle & Byte Ltd"
 defaultContentLanguage: en
 enableRobotsTXT: true
 enableEmoji: true
