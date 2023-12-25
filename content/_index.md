@@ -56,7 +56,7 @@
 
 ---
 #### Hypothesis
-  The right work can redefine happiness.
+  The right work can redefine purpose and growth.
 
 #### Experiment
   - Fields: Software Engineering, Product Design, CNC Milling.
