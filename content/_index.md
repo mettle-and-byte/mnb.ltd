@@ -4,7 +4,7 @@
 
 Sitting at the intersection of the digital and physical worlds, Mettle & Byte was founded in late 2023 and focuses on software that runs hardware, and hardware that runs software - specifically in the areas of manufacturing and industrial control.
 
-Our current work includes supporting the [Millennium Machines](https://github.com/millenniummachines) project, where we are responsible for the implementation of [MillenniumOS](https://github.com/MillenniumMachines/MillenniumOS/) - a package of functionality built on top of RepRapFirmware that guides new users through their first steps in subtractive manufacturing (Milling).
+Our current work includes supporting the [Millennium Machines](https://github.com/millenniummachines) project, where we are responsible for the implementation of [MillenniumOS](https://github.com/MillenniumMachines/MillenniumOS/) - a package of functionality built on top of RepRapFirmware that guides new users through their first steps in subtractive manufacturing (milling).
 
 ## Services
 
