@@ -8,7 +8,7 @@ enableEmoji: true
 params:
   author:
     name: Ben A.
-  description: Machining. And Coding. And that's about it.
+  description: Machining. Coding. Hardware. And that's about it.
   madeWith: 'Made with [Bear Cub](https://github.com/clente/hugo-bearcub) | [Say Hi :wave:](mailto:hi@mnb.ltd)'
   custom_css:
     - css/fade.css
@@ -23,3 +23,7 @@ markup:
   goldmark:
     renderer:
       unsafe: true
+  tableOfContents:
+    endLevel: 3
+    ordered: true
+    startLevel: 1
