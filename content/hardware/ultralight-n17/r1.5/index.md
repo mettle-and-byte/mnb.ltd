@@ -95,25 +95,39 @@ It is worth noting that right angle XT30 2+2 cables are probably not compatible 
 
 ### Mounting
 
-The Ultralight N17 can be bolted to the back of a NEMA17 motor using our [3D-printable spacer and 3010 fan mount](https://www.printables.com/model/1467100-mnb-ultralight-n17-open-frame-3010-fan-mount-pcb-s). This mounting system looks the part while helping to organise cabling.
+The Ultralight N17 can be bolted to the back of a NEMA17 motor using our [3D-printable spacer and 3010 fan mount](https://www.printables.com/model/1467100-mnb-ultralight-n17-open-frame-3010-fan-mount-pcb-s). This mounting system looks the part, enables active cooling and helps to organise your cabling.
 
-Usage is simple - print the models from our Printables page in a filament that is suitable for the motor temperatures you expect (ideally ASA or ABS). 
+You will need:
+
+2 x M3 Socket-head Cap Screws (SHCS) 5mm longer than the body-length of your motor
+2 x M3x12mm SHCS
+1 x 3010 Fan with PH 2.0 connector
+1 x Printed PCB Mount with Encoder Hole (ASA or ABS)
+1 x Printed Open Frame Fan Mount (ASA or ABS)
+
+**IMPORTANT**: ALL DIRECTIONS REFERENCE THE MOTOR AND PCB WITH THE MOTOR CONNECTOR AT 12 O'CLOCK.
 
 When looking at the back of your motor, remove the top right and bottom left bolts.
 
 **NEVER** remove more than 2 bolts at once as it may cause alignment issues with your motor.
 
-You will also need 2 x M3 Socket-head Cap Screws (SHCS) that are 5mm longer than the total length of your motor, and 2 x M3x12mm SHCS
-
 Set the jumpers on the Ultralight N17 up the way you would like, and bolt your fan into the mount using the 2 x M3x12mm SHCS. Ideally, use the top right and bottom left holes of the fan (when looking at the underside of the fan / fan mount) as the top left hole may interfere with the endstop connector.
+
+Do not overtighten these bolts. They just need to thread into the printed part with very little torque required to hold the fan in effectively.
 
 You can push any excess fan cable down the 2 sides of the fan that have a slight gap.
 
 Place the Ultralight N17 onto the spacer board, then plug the endstop and fan connectors in. Plug the motor connector in on both ends.
 
-Put the fan mount on top, aligning the cut-out towards the left hand side to make room for your INPUT (XT30 2+2) cable. 
+Put the fan mount on top of the Ultralight N17, aligning the cut-out towards the left hand side to make room for your INPUT (XT30 2+2) cable. 
 
-Push your remaining M3 SHCS through the two mounting holes and into the back of the motor, tightening them until you feel that everything is secure. Plug in your INPUT connector and use the cable-tie channels in the spacer and fan mount to secure all of the wires.
+Push your remaining M3 SHCS through the two mounting holes, using them to hold the 3d printed parts and the board together. Then position the board on the back of your motor, placing the long screws into the empty holes.
+
+Push them in with an allen key until they bottom out and then tighten them into the front plate of the motor.
+
+Again, you do not need much torque here. Too much will snap the fan mount.
+
+Plug in your INPUT connector and use the cable-tie channels in the spacer and fan mount to secure all of the wires.
 
 ### RRF Instructions
 
@@ -128,7 +142,11 @@ Push your remaining M3 SHCS through the two mounting holes and into the back of 
 
 #### Firmware Configuration
 
-All expansion boards connected to a single RRF instance must each have a unique CAN address. The Ultralight N17 defaults to address 124. Each unconfigured CAN expansion board in the system must be powered up, leaving all other unconfigured boards unpowered. You can then reconfigure the powered on board with a unique address to allow other expansion boards to be brought up on address 124.
+All expansion boards connected to a single RRF instance must each have a unique CAN address. The Ultralight N17 defaults to address 124. 
+
+If you are configuring multiple boards, power up the unconfigured CAN expansion boards one at a time, leaving all other unconfigured boards unpowered. 
+
+You can then reconfigure the powered on board with a unique address, which allows the next expansion boards to be brought up on address 124.
 
 1. Power up the Ultralight N17.
 2. Observe the VIN and MCU LEDs on the board. The VIN LED should be solidly on and the MCU LED should flash twice a second until it synchronises with the mainboard. When synchronised, it will blink once a second at the same time as the mainboard.
@@ -136,7 +154,7 @@ All expansion boards connected to a single RRF instance must each have a unique 
 4. If the MCU LED slows down, congratulations - your Ultralight N17 has connected to your mainboard.
 5. Run `M122 B124` via the console. It should report something similar to the below output:
 
-```
+```gcode
 M122 B124
 Diagnostics for board 124:
 Duet MNBN17R1_5 firmware version 3.6.1+1 (2025-10-19 23:26:22) Clock 150.0MHz
@@ -163,7 +181,7 @@ dup 0, oos 0/0/0/0, rxMotionDelay 0
 10. If you have more than one expansion board, run through these steps again for each board, powering on only one unconfigured board at a time.
 11. Once all of your boards are configured on their own addresses, you can configure them as axes in RRF:
 
-```
+```gcode
 ; Wait for expansion boards to sync with mainboard
 G4 S2 
 
