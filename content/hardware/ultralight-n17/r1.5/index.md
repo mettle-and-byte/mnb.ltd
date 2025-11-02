@@ -7,20 +7,27 @@ aliases:
   - "/h/ul-n17-r1.5"
 ---
 
+<img src="./images/mnb-ultralight-n17-r1.5-300h.png"
+  style="display: block; margin: 0 auto"
+/>
+
+---
 
 [Features](#features) [Installation](#installation) [Pinout](#pinout) [Configuration](#configuration) 
 
+---
+
 ## Introduction
 
-The Ultralight N17 is the first RepRapFirmware and Klipper compatible expansion board from Mettle & Byte (MnB), a small business developing software, hardware, and firmware for the open-source / hobby CNC space.
+The Ultralight N17 is the first RepRapFirmware and Klipper compatible expansion board from Mettle & Byte (MnB).
 
 Developed in collaboration with *Millennium Machines*, the Ultralight N17 is a CAN-FD connected motor driver designed to fit onto the back of any NEMA17 (42mm) size motor, providing enough IO to run a single axis.
 
 Initially designed for use on the Millennium Machines rotary toolchanger, the Ultralight N17 aims to be a highly versatile expansion option, bypassing mainboard driver limitations and allowing control of remote motors with only a 4-wire CAN-FD + Power connection.
 
-It is suitable for use in 3D printers, Laser cutters and any other CNC controlled machine that requires a NEMA17 motor at up to 3A of current.
+It is suitable for use in 3D printers, Laser cutters and any other CNC controlled machine that needs to drive a NEMA17 motor.
 
-The Ultralight N17 takes inspiration from many open-source hardware projects, and as such, the schematic will be available as well. This page covers the production-ready **R1.5** version of the board.
+The Ultralight N17 takes inspiration from many open-source hardware projects, and as such, the schematic will be available as well. This page covers the **r1.5** version of the board.
 
 ---
 
@@ -28,11 +35,11 @@ The Ultralight N17 takes inspiration from many open-source hardware projects, an
 
 ### Core Components
 
-* **High Power Microcontroller:** The brain of the operation is a **Raspberry Pi RP2350A**, providing a significant performance uplift over the RP2040 commonly used for RRF / Klipper expansion boards. On RRF, this opens up the possibility of closed-loop control (software dependent, not possible yet).
-* **Silent & Precise Motor Driver:** Features the **Trinamic TMC2240**, renowned for its silent StealthChop2™ technology and precise control. It is capable of up to 256 microsteps.
-* **High-Current Capability:** Configured for a **3.0A peak motor current**[^1], providing ample power for a wide range of demanding NEMA17 stepper motors.
+* **High Power Microcontroller:** The brains of the operation is a **Raspberry Pi RP2350A**, providing a significant performance uplift over the RP2040 commonly used for RRF / Klipper expansion boards. On RRF, this opens up the possibility of closed-loop control (software dependent and requires a small daughter board, implementation ongoing).
+* **Silent & Precise Motor Driver:** Features the **Trinamic TMC2240**, renowned for its silent StealthChop2™ and StealthChop4 technology and precise control at up to 256 microsteps.
+* **High-Current Capability:** Up to **3.0A peak motor current**[^1], providing ample power for a wide range of demanding NEMA17 stepper motors.
 
-[^1]: Active cooling required
+[^1]: Active cooling required. Drive a 3010 fan using the onboard AUX header and our 3D printed fan mounts!
 
 ### Connectivity
 
@@ -51,12 +58,12 @@ The Ultralight N17 takes inspiration from many open-source hardware projects, an
 
 ### Power & Usability
 
-* **Wide Input Voltage:** Designed to operate on a wide DC input range, from **12V to 36V**[^2].
+* **Wide Input Voltage:** Designed to operate on a wide DC input range, from **~14V to 36V**[^2].
 * **High-Efficiency Power Delivery:** A multi-stage power system featuring Texas Instruments components throughout ensures stable and efficient power for the MCU, driver, and onboard logic.
 * **Onboard Diagnostics:** Status LEDs for main power (`VIN`), MCU activity, endstop (`STOP`), and auxiliary output (`AUX`) provide at-a-glance diagnostics.
 * **User Serviceability:** Onboard push buttons for `BOOT` and `RESET`, along with an exposed SWD header for advanced debugging.
 
-[^2]: 36v is the absolute maximum voltage tolerated by the TMC2240 driver. Back EMF from running the motor at this voltage will likely cause overvoltage events!
+[^2]: 36v is the absolute maximum voltage tolerated by the TMC2240 driver. Back EMF from running the motor at this voltage will cause overvoltage events!
 
 ---
 
@@ -78,11 +85,35 @@ The Ultralight N17 comes with RepRapFirmware installed (the latest stable at tim
 ### Not Included
 The obvious one - a motor. You will need a NEMA17 bipolar stepper motor (4 wire).
 
-You will need an XT30 2+2 cable. I like the [Mellow Fly CAN Cable](https://www.aliexpress.com/item/1005007527109751.html).
+You will need an XT29 2+2 cable. I like the [Mellow Fly CAN Cable](https://www.aliexpress.com/item/1005007527109751.html). 
 
 Optionally, you will also need a fan for active cooling at higher current limits, and an endstop switch of your choice. The fan and endstop will need to be rated for the same voltage - either 5v, 12v or 24v as both ports take their output voltage from the same set of jumpers.
 
 Gdstime make a [3010, 24v fan with a PH 2.0 connector](https://www.aliexpress.com/item/4000256787938.html) that is perfect for active cooling.
+
+It is worth noting that right angle XT30 2+2 cables are probably not compatible with our fan mount, as there is not enough room for the lip on these cables given where the fan is placed.
+
+### Mounting
+
+The Ultralight N17 can be bolted to the back of a NEMA17 motor using our [3D-printable spacer and 3010 fan mount](https://www.printables.com/model/1467100-mnb-ultralight-n17-open-frame-3010-fan-mount-pcb-s). This mounting system looks the part while helping to organise cabling.
+
+Usage is simple - print the models from our Printables page in a filament that is suitable for the motor temperatures you expect (ideally ASA or ABS). 
+
+When looking at the back of your motor, remove the top right and bottom left bolts.
+
+**NEVER** remove more than 2 bolts at once as it may cause alignment issues with your motor.
+
+You will also need 2 x M3 Socket-head Cap Screws (SHCS) that are 5mm longer than the total length of your motor, and 2 x M3x12mm SHCS
+
+Set the jumpers on the Ultralight N17 up the way you would like, and bolt your fan into the mount using the 2 x M3x12mm SHCS. Ideally, use the top right and bottom left holes of the fan (when looking at the underside of the fan / fan mount) as the top left hole may interfere with the endstop connector.
+
+You can push any excess fan cable down the 2 sides of the fan that have a slight gap.
+
+Place the Ultralight N17 onto the spacer board, then plug the endstop and fan connectors in. Plug the motor connector in on both ends.
+
+Put the fan mount on top, aligning the cut-out towards the left hand side to make room for your INPUT (XT30 2+2) cable. 
+
+Push your remaining M3 SHCS through the two mounting holes and into the back of the motor, tightening them until you feel that everything is secure. Plug in your INPUT connector and use the cable-tie channels in the spacer and fan mount to secure all of the wires.
 
 ### RRF Instructions
 
@@ -164,7 +195,14 @@ TBD
 ---
 
 ## Pinout
-We maintain an interactive [Bill of materials](bom/bom.html) that has most pins and jumpers marked as per the board design. 
+
+
+<a href="./images/mnb-ultralight-n17-r1.5-pinout.png">
+<img src="./images/mnb-ultralight-n17-r1.5-pinout-transparent.png"
+  style="display: block; margin: 0 auto"
+/></a>
+
+We also maintain an interactive [bill of materials](bom/bom.html) that has most pins and jumpers marked as per the board design. 
 
 Click a component on the front or back of the board to learn more about it. Some components have a description for further information.
 
@@ -174,7 +212,7 @@ There are only 2 necessary connections to use the board. The `INPUT` connector f
 
 ## Configuration
 
-Properly configuring your Ultralight N17 is essential for reliable and correct operation.
+Properly configuring your Ultralight N17 is essential for correct operation.
 
 ### Jumpers
 
