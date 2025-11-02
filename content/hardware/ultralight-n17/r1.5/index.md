@@ -99,11 +99,11 @@ The Ultralight N17 can be bolted to the back of a NEMA17 motor using our [3D-pri
 
 You will need:
 
-2 x M3 Socket-head Cap Screws (SHCS) 5mm longer than the body-length of your motor
-2 x M3x12mm SHCS
-1 x 3010 Fan with PH 2.0 connector
-1 x Printed PCB Mount with Encoder Hole (ASA or ABS)
-1 x Printed Open Frame Fan Mount (ASA or ABS)
+- 2 x M3 Socket-head Cap Screws (SHCS) 5mm longer than the body-length of your motor
+- 2 x M3x12mm SHCS
+- 1 x 3010 Fan with PH 2.0 connector
+- 1 x Printed PCB Mount with Encoder Hole (ASA or ABS)
+- 1 x Printed Open Frame Fan Mount (ASA or ABS)
 
 **IMPORTANT**: ALL DIRECTIONS REFERENCE THE MOTOR AND PCB WITH THE MOTOR CONNECTOR AT 12 O'CLOCK.
 
