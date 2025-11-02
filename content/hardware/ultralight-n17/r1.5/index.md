@@ -85,7 +85,7 @@ The Ultralight N17 comes with RepRapFirmware installed (the latest stable at tim
 ### Not Included
 The obvious one - a motor. You will need a NEMA17 bipolar stepper motor (4 wire).
 
-You will need an XT29 2+2 cable. I like the [Mellow Fly CAN Cable](https://www.aliexpress.com/item/1005007527109751.html). 
+You will need an XT30 2+2 cable. I like the [Mellow Fly CAN Cable](https://www.aliexpress.com/item/1005007527109751.html). 
 
 Optionally, you will also need a fan for active cooling at higher current limits, and an endstop switch of your choice. The fan and endstop will need to be rated for the same voltage - either 5v, 12v or 24v as both ports take their output voltage from the same set of jumpers.
 
