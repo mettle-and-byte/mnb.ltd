@@ -19,6 +19,11 @@ params:
 
 generateSocialCard: true
 
+module:
+  imports:
+    - path: github.com/martignoni/hugo-notice
+    - path: hugo-bearcub
+
 markup:
   goldmark:
     renderer:

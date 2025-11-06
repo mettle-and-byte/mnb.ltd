@@ -70,6 +70,10 @@ The Ultralight N17 takes inspiration from many open-source hardware projects, an
 ## Installation
 The Ultralight N17 comes with RepRapFirmware installed (the latest stable at time of packaging), so you can get up and running with RRF very quickly.
 
+{{< notice note >}}
+**IMPORTANT**: ALL DIRECTIONS REFERENCE THE MOTOR AND PCB WITH THE MOTOR CONNECTOR AT 12 O'CLOCK.
+{{< /notice >}}
+
 ### Contents
 ```
 1  x Mettle & Byte Ultralight N17, r1.5
@@ -105,11 +109,11 @@ You will need:
 - 1 x Printed PCB Mount with Encoder Hole (ASA or ABS)
 - 1 x Printed Open Frame Fan Mount (ASA or ABS)
 
-**IMPORTANT**: ALL DIRECTIONS REFERENCE THE MOTOR AND PCB WITH THE MOTOR CONNECTOR AT 12 O'CLOCK.
-
 When looking at the back of your motor, remove the top right and bottom left bolts.
 
+{{< notice warning >}}
 **NEVER** remove more than 2 bolts at once as it may cause alignment issues with your motor.
+{{< /notice >}}
 
 Set the jumpers on the Ultralight N17 up the way you would like, and bolt your fan into the mount using the 2 x M3x12mm SHCS. Ideally, use the top right and bottom left holes of the fan (when looking at the underside of the fan / fan mount) as the top left hole may interfere with the endstop connector.
 
@@ -139,6 +143,10 @@ Plug in your INPUT connector and use the cable-tie channels in the spacer and fa
 4. Connect optional endstop and aux output.
 5. Insert XT30 2+2 on connector marked `INPUT`. Double and triple check the polarity of your wiring as reversing this will damage the board.
 6. CAN-H is Yellow and CAN-L is White. Connect these into your mainboard or as a (short) spur off your CAN-bus.
+
+{{< notice warning >}}
+**QUADRUPLE CHECK** your `INPUT` polarity. Getting this back to front has a very real chance of killing your board instantly.
+{{< /notice >}}
 
 #### Firmware Configuration
 
