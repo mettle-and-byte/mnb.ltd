@@ -245,7 +245,7 @@ Properly configuring your Ultralight N17 is essential for correct operation.
 | Header | Function                   | Comment                                                                                                                                                                                    |
 | :----- | :------------------------  | :--------------------                                                                                                                                                                                            |
 | `NPN`  | **Endstop Input Type.**    | Install a jumper to configure the `STOP` input for NPN-style (sinking) endstops. Leave the jumper off for PNP (sourcing) endstops.                                                         |
-| `VIO`  | **IO Output Voltage.**     | Install a jumper between 5v, 12 or VIN and one of the output pins to set the IO voltage. Applies to STOP and AUX. ONE JUMPER ONLY!                                                         |
+| `VIO`  | **IO Output Voltage.**     | Install a jumper between 5v, 12v or VIN and one of the output pins to set the IO voltage. Applies to `STOP` and `AUX`. ONE JUMPER ONLY!                                                         |
 | `CAN`  | **CAN Bus Source.**        | Switches between software (RRF) or software CAN control. Install two horizontal jumpers facing inwards from the H mark for RRF, or two jumpers facing inwards from the S mark for Klipper. |
 | `TERM` | **CAN Bus Termination.**   | Install jumper to terminate the CAN bus with 2 x 60Ω resistors if this device is the end of the bus.                                                                                       |
 
@@ -262,7 +262,7 @@ The TMC2240 driver can be controlled via UART or SPI.
 
 Be careful when removing connectors from the PH 2.0 receptacles. These have a rather high locking force and pulling on the connector only can sometimes separate the receptacle from the board. 
 
-It is best to try and hold the receptacle and then pull the connector away from it, or otherwise pry the connector away from the receptacle.
+It is best to try and hold the receptacle and then pull the connector away from it while pushing slightly backwards, away from the locking tabs at the 'front' of the connector.
 
 If you do find the receptacle comes away from the board when you remove the connector, you can simply push it back on to the pins. Adding a tiny dab of superglue on the underside of the receptacle between the pin holes will help to keep it in place next time.
 
