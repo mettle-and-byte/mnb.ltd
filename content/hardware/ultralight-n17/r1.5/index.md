@@ -36,7 +36,7 @@ The Ultralight N17 takes inspiration from many open-source hardware projects, an
 ### Core Components
 
 * **High Power Microcontroller:** The brains of the operation is a **Raspberry Pi RP2350A**, providing a significant performance uplift over the RP2040 commonly used for RRF / Klipper expansion boards. On RRF, this opens up the possibility of closed-loop control (software dependent and requires a small daughter board, implementation ongoing).
-* **Silent & Precise Motor Driver:** Features the **Trinamic TMC2240**, renowned for its silent StealthChop2™ and StealthChop4 technology and precise control at up to 256 microsteps.
+* **Silent & Precise Motor Driver:** Features the **Trinamic TMC2240**, renowned for its silent StealthChop2™ technology, SPI connectivity and precise control at up to 256 microsteps.
 * **High-Current Capability:** Up to **3.0A peak motor current**[^1], providing ample power for a wide range of demanding NEMA17 stepper motors.
 
 [^1]: Active cooling required. Drive a 3010 fan using the onboard AUX header and our 3D printed fan mounts!
@@ -46,7 +46,7 @@ The Ultralight N17 takes inspiration from many open-source hardware projects, an
 * **CAN-FD:** A dedicated CAN-FD interface based on the reliable Microchip **MCP2518FD** controller and **MCP2542WFD** transceiver. All communication is handled via the RP2350's high-speed SPI bus for maximum throughput.
 * **Selectable CAN Source:** For software CAN implementations, the **MCP2542WFD** can be jumpered directly to the RP2350. This can be used in combination with Klipper!
 * **Dual-Mode Driver Communication:** The TMC2240 can be controlled via **UART** (for drop-in compatibility with existing RRF firmware), but also exposes **SPI** connectivity for more advanced configuration and diagnostics. This will allow SPI compatible drivers to be written in future.
-* **Jumper-Selectable Bus Termination:** A simple jumper allows you to add a 120Ω termination resistor if the board is the last device on the CAN bus.
+* **Jumper-Selectable Bus Termination:** A simple jumper allows you to add a split 20Ω termination resistor if the board is the last device on the CAN bus.
 
 ### Onboard I/O
 
@@ -83,13 +83,13 @@ The Ultralight N17 comes with RepRapFirmware installed (the latest stable at tim
 1  x Valcon PH 2.0 connector, 2 pin
 1  x Valcon XH 2.5 connector, 4 pin
 10 x Valcon PH crimps 
-1  x 70mm Motor Cable XH 2.5 to PH 2.0 (crimped but connector not installed)
+1  x 70mm Motor Cable XH 2.5 to PH 2.0 (crimped, install correct connector for your motor)
 ```
 
 ### Not Included
 The obvious one - a motor. You will need a NEMA17 bipolar stepper motor (4 wire).
 
-You will need an XT30 2+2 cable. I like the [Mellow Fly CAN Cable](https://www.aliexpress.com/item/1005007527109751.html). 
+You will also need an XT30 2+2 cable. I like the [Mellow Fly CAN Cable](https://www.aliexpress.com/item/1005007527109751.html). 
 
 Optionally, you will also need a fan for active cooling at higher current limits, and an endstop switch of your choice. The fan and endstop will need to be rated for the same voltage - either 5v, 12v or 24v as both ports take their output voltage from the same set of jumpers.
 
@@ -115,7 +115,7 @@ When looking at the back of your motor, remove the top right and bottom left bol
 **NEVER** remove more than 2 bolts at once as it may cause alignment issues with your motor.
 {{< /notice >}}
 
-Set the jumpers on the Ultralight N17 up the way you would like, and bolt your fan into the mount using the 2 x M3x12mm SHCS. Ideally, use the top right and bottom left holes of the fan (when looking at the underside of the fan / fan mount) as the top left hole may interfere with the endstop connector.
+Set up the jumpers on the Ultralight N17 the way you would like, and bolt your fan into the mount using the 2 x M3x12mm SHCS. Ideally, use the top right and bottom left holes of the fan (when looking at the underside of the fan / fan mount) as the top left hole may interfere with the endstop connector.
 
 Do not overtighten these bolts. They just need to thread into the printed part with very little torque required to hold the fan in effectively.
 
@@ -213,6 +213,27 @@ M906 X2000 Y2000
 
 ; Set standstill current reduction to 10%
 M917 X10 Y10
+
+; Set up NC endstops
+; After wiring run M119 to check status of endstops.
+; Place a ! before the pin name (!20.stop, !21.stop ...)
+; if endstop shows activated when physically deactivated.
+M574 X1 S1 P"20.stop"
+M574 Y1 S1 P"21.stop"
+
+; Configure fans
+; Change F param if you already have more than one fan configured.
+M950 F1 C"20.aux"
+M950 F2 C"21.aux"
+
+; Configure driver temperature sensors
+M308 S12 Y"drivertemp" P"20.dummy" A"X Axis Stepper Temp"
+M308 S13 Y"drivertemp" P"21.dummy" A"Y Axis Stepper Temp"
+
+; Enable thermostatic control - start fan at 50c at 10%, rising to 100% at 70c.
+; Boost for half a second when starting up.
+M106 P1 H12 T50:70 L0.10 X1.0 B0.5 C"X Axis Stepper Fan"
+M106 P1 H13 T50:70 L0.10 X1.0 B0.5 C"Y Axis Stepper Fan"
 ```
 
 ### Klipper Instructions
@@ -234,6 +255,35 @@ Click a component on the front or back of the board to learn more about it. Some
 
 There are only 2 necessary connections to use the board. The `INPUT` connector for your VIN and CAN(-FD), and the `MOTOR` connector.
 
+For reference, the following lists the GPIO pins on the RP2350 MCU and their assigned function:
+
+| GPIO Pin      | Function       |
+| :------------ | :------------- |
+| `GPIO0`       | `DRV_EN`       |
+| `GPIO1`       | `DRV_UART`     |
+| `GPIO2`       | `DRV_DIR`      |
+| `GPIO3`       | `DRV_STEP`     |
+| `GPIO4`       | `DRV_MISO`     |
+| `GPIO5`       | `DRV_CS`       |
+| `GPIO6`       | `DRV_SCK`      |
+| `GPIO7`       | `DRV_MOSI`     |
+| `GPIO8`       | `CAN_MISO`     |
+| `GPIO9`       | `CAN_CS`       |
+| `GPIO10`      | `CAN_SCK`      |
+| `GPIO11`      | `CAN_MOSI`     |
+| `GPIO12`      | `DRV_DIAG`     |
+| `GPIO13`      | `CAN_INT`      |
+| `GPIO14`      | `CAN_MCU_RX`   |
+| `GPIO15`      | `CAN_MCU_TX`   |
+| `GPIO16`      | `AUX`          |
+| `GPIO18`      | `STOP`         |
+| `GPIO19`      | `EXT1`         |
+| `GPIO20`      | `EXT2`         |
+| `GPIO21`      | `EXT3`         |
+| `GPIO22`      | `EXT4`         |
+| `GPIO23`      | `STATUS`       |
+| `GPIO26_ADC0` | `PVIN_REF`     |
+| `GPIO29_ADC3` | `DRV_UART_ENA` |
 ---
 
 ## Configuration
@@ -246,7 +296,7 @@ Properly configuring your Ultralight N17 is essential for correct operation.
 | :----- | :------------------------  | :--------------------                                                                                                                                                                                            |
 | `NPN`  | **Endstop Input Type.**    | Install a jumper to configure the `STOP` input for NPN-style (sinking) endstops. Leave the jumper off for PNP (sourcing) endstops.                                                         |
 | `VIO`  | **IO Output Voltage.**     | Install a jumper between 5v, 12v or VIN and one of the output pins to set the IO voltage. Applies to `STOP` and `AUX`. ONE JUMPER ONLY!                                                         |
-| `CAN`  | **CAN Bus Source.**        | Switches between software (RRF) or software CAN control. Install two horizontal jumpers facing inwards from the H mark for RRF, or two jumpers facing inwards from the S mark for Klipper. |
+| `CAN`  | **CAN Bus Source.**        | Switches between hardware (RRF) or software (Klipper / custom) CAN control. Install two horizontal jumpers facing inwards from the H mark for RRF, or two jumpers facing inwards from the S mark for Klipper / custom. |
 | `TERM` | **CAN Bus Termination.**   | Install jumper to terminate the CAN bus with 2 x 60Ω resistors if this device is the end of the bus.                                                                                       |
 
 ### Driver Communication Mode (UART vs. SPI)
