@@ -76,14 +76,15 @@ The Ultralight N17 comes with RepRapFirmware installed (the latest stable at tim
 
 ### Contents
 ```
-1  x Mettle & Byte Ultralight N17, r1.5
-1  x Valcon PH 2.0 connector, 6 pin
-1  x Valcon PH 2.0 connector, 4 pin
-1  x Valcon PH 2.0 connector, 3 pin
-1  x Valcon PH 2.0 connector, 2 pin
-1  x Valcon XH 2.5 connector, 4 pin
-10 x Valcon PH crimps 
-1  x 70mm Motor Cable XH 2.5 to PH 2.0 (crimped, install correct connector for your motor)
+1  x Mettle & Byte Ultralight N17, **R1.5**
+1  x 70mm Motor Cable **XH 2.5 to PH 2.0** (crimped, install correct connector for your motor)
+1  x Valcon PH 2.0 connector, **6 pin**
+1  x Valcon PH 2.0 connector, **4 pin**
+1  x Valcon PH 2.0 connector, **3 pin**
+1  x Valcon PH 2.0 connector, **2 pin**
+1  x Valcon XH 2.5 connector, **4 pin**
+5  x Jumpers, 2.0 pitch, **2 pin**
+10 x Valcon PH 2.0 crimps 
 ```
 
 ### Not Included
