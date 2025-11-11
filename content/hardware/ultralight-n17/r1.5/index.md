@@ -13,7 +13,7 @@ aliases:
 
 ---
 
-[Features](#features) [Installation](#installation) [Pinout](#pinout) [Configuration](#configuration) 
+[Features](#features) [Installation](#installation) [Pinout](#pinout) [Configuration](#configuration) [Thanks](#thanks)
 
 ---
 
@@ -87,11 +87,14 @@ The Ultralight N17 comes with RepRapFirmware installed (the latest stable at tim
 ```
 
 ### Not Included
-The obvious one - a motor. You will need a NEMA17 bipolar stepper motor (4 wire).
+
+3D Printed parts shown in product images are not included, but the models are available for free on Printables (see [Mounting](#mounting)).
+
+You will need to supply your own NEMA17 bipolar stepper motor (4 wire).
 
 You will also need an XT30 2+2 cable. I like the [Mellow Fly CAN Cable](https://www.aliexpress.com/item/1005007527109751.html). 
 
-Optionally, you will also need a fan for active cooling at higher current limits, and an endstop switch of your choice. The fan and endstop will need to be rated for the same voltage - either 5v, 12v or 24v as both ports take their output voltage from the same set of jumpers.
+Optionally, you will need a fan for active cooling at higher current limits, and an endstop switch of your choice. The fan and endstop will need to be rated for the same voltage - either 5v, 12v or 24v as both ports take their output voltage from the same set of jumpers.
 
 Gdstime make a [3010, 24v fan with a PH 2.0 connector](https://www.aliexpress.com/item/4000256787938.html) that is perfect for active cooling.
 
@@ -316,13 +319,10 @@ It is best to try and hold the receptacle and then pull the connector away from 
 
 If you do find the receptacle comes away from the board when you remove the connector, you can simply push it back on to the pins. Adding a tiny dab of superglue on the underside of the receptacle between the pin holes will help to keep it in place next time.
 
-
-<!--
-## Motivations
-(You can fill this section in with the story behind the project)
--->
-
-<!--
 ## Thanks
-(You can fill this section in to thank collaborators)
--->
+ 
+ - Everyone on the [Millennium Machines](https://github.com/millenniumMachines/) team for their hard work, and encouragement to take this on myself.
+ - `Jay_s_uk` and `Gloomyandy` from [TeamGloomy](https://teamgloomy.github.io/) for their technical assistance and ideas.
+ - [DesktopMachineShop](https://www.desktopmachineshop.com/shop) `Dave` for supplying me with endmills that never get used as my Milo is mostly a software development platform at this point!
+ - The [Duet3D](https://www.duet3d.com/) team who without which, we would not be running RepRapFirmware on CNC machines.
+ - `Allen` from [West3D](https://west3d.com/) for the amazing photos of the board and printed mounts, and for putting it through its paces.
