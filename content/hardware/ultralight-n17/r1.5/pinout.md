@@ -43,12 +43,14 @@ There are only 2 necessary connections to use the board:
 
 - **CAN-H**: Yellow wire
 - **CAN-L**: White wire
-- **VIN**: Red wire (typically 14-32V DC, 36V absolute maximum)
+- **VIN**: Red wire (typically 14-32V DC)
 - **GND**: Black wire
 
-### MOTOR Connector (PH 2.0, 4-pin)
+### MOTOR Connector (XH 2.5, 4-pin)
 
-Standard 4-wire bipolar stepper motor connection. Use the included cable to adapt from your motor's XH 2.5 connector.
+A standard 4-wire bipolar stepper motor connection. Use the included cable and PH 2.0 connectors to adapt to your motor's PH 2.0 connector. Most NEMA17 motors will have a 6 pin PH 2.0 connector with only the two outer and two inner pins connected.
+
+The 2 inner pins are usually flipped, so the `A,A,B,B` pattern (Black, Green, Blue, Red) from the Ultralight N17 will end up as `A,NC,B,A,NC,B` or Black, Red, Green, Blue
 
 ---
 
