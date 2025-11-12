@@ -1,0 +1,22 @@
+{{ define "main" }}
+<article>
+  <header>
+    <h1>{{ .Title }}</h1>
+    {{ if and (not .Date.IsZero) (.Params.author) }}
+    <p class="post-meta">
+      <time datetime='{{ .Date.Format "2006-01-02" }}' pubdate>
+        {{ .Date.Format (default "2006-01-02" .Site.Params.dateFormat) }}
+      </time>
+      {{ if .Params.author }}
+        · {{ .Params.author }}
+      {{ end }}
+    </p>
+    {{ end }}
+  </header>
+  <content>
+    {{ .Content }}
+  </content>
+  {{ if .Pages }}
+  {{ end }}
+</article>
+{{ end }}

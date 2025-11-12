@@ -1,0 +1,88 @@
+/* Hugo Notice Styles */
+.notice {
+  position: relative;
+  padding: 1rem 1rem 1rem 2.5rem;
+  margin-bottom: 1rem;
+  border-left: 4px solid;
+  border-radius: 4px;
+}
+
+.notice p {
+  margin: 0.5rem 0;
+}
+
+.notice p:first-child {
+  margin-top: 0;
+}
+
+.notice p:last-child {
+  margin-bottom: 0;
+}
+
+.notice-title {
+  font-weight: bold;
+  margin-bottom: 0.5rem !important;
+  display: flex;
+  align-items: center;
+}
+
+.icon-notice {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  margin-right: 0.5em;
+}
+
+.icon-notice svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+.icon-notice.baseline {
+  vertical-align: -0.2em;
+}
+
+/* Warning (yellow/orange) */
+.notice.warning {
+  background-color: #fff3cd;
+  border-left-color: #ffc107;
+  color: #856404;
+}
+
+.notice.warning .icon-notice svg {
+  fill: #ffc107;
+}
+
+/* Info (blue) */
+.notice.info, .notice.note {
+  background-color: #d1ecf1;
+  border-left-color: #17a2b8;
+  color: #0c5460;
+}
+
+.notice.info .icon-notice svg, .notice.note .icon-notice svg {
+  fill: #17a2b8;
+}
+
+/* Tip (green) */
+.notice.tip {
+  background-color: #d4edda;
+  border-left-color: #28a745;
+  color: #155724;
+}
+
+.notice.tip .icon-notice svg {
+  fill: #28a745;
+}
+
+/* Error/Danger (red) */
+.notice.error, .notice.danger {
+  background-color: #f8d7da;
+  border-left-color: #dc3545;
+  color: #721c24;
+}
+
+.notice.error .icon-notice svg, .notice.danger .icon-notice svg {
+  fill: #dc3545;
+}
