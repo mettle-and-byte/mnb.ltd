@@ -31,6 +31,7 @@ This page covers the **r1.5** version of the board.
 3. **[Mount to Motor](./mounting)** - Install on your NEMA17 motor
 4. **[Configure Firmware](./firmware)** - Set up RRF or Klipper
 5. **[Learn](./features)** - Detailed technical information
+6. **[Extend](./extend)** - Extend your Ultralight N17 with "undercarriages"
 
 ---
 
