@@ -126,7 +126,20 @@ M106 P1 H13 T50:70 L0.10 X1.0 B0.5 C"Y Axis Stepper Fan"
 
 ## Klipper Setup
 
-TBD
+You will need to build the firmware for the RP2350, and set the following ports for CANBUS:
+
+| GPIO Pin      | Function       |
+| :------------ | :------------- |
+| `GPIO14`      | `CAN_MCU_RX`   |
+| `GPIO15`      | `CAN_MCU_TX`   |
+
+---
+
+{{< notice note >}}
+Remember to set the `CAN` source jumpers to `S` so these GPIO pins are connected directly to the CAN transceiver on the board.
+{{< /notice >}}
+
+Configs are still TBD.
 
 ---
 
