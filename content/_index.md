@@ -6,6 +6,10 @@ Sitting at the intersection of the digital and physical worlds, Mettle & Byte wa
 
 Our current work includes supporting the [Millennium Machines](https://github.com/millenniummachines) project, where we are responsible for the implementation of [MillenniumOS](https://github.com/MillenniumMachines/MillenniumOS/) - a package of functionality built on top of RepRapFirmware that guides new users through their first steps in subtractive manufacturing (milling).
 
+## Hardware
+
+[Ultralight N17](./hardware/ultralight-n17/r1.5/) - a NEMA17-footprint smart motor controller, compatible with RRF, Klipper and even SimpleFOC!
+
 ## Services
 
 * Open-Source software and hardware development and testing.
