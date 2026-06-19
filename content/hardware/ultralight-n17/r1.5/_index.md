@@ -39,6 +39,8 @@ This page covers the **r1.5** version of the board.
 
 Buy the Ultralight N17 on [Lectronz](https://lectronz.com/products/ultralight-n17-can-fd-smart-motor-driver).
 
+[Tindie](https://www.tindie.com/products/mnb/ultralight-n17/) is temporarily unavailable (Tindie has paused payouts).
+
 ---
 
 ## Thanks
